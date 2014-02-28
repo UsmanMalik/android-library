@@ -51,6 +51,9 @@ public class GetRemoteUserNameOperation extends RemoteOperation {
 	// HEADER
 	private static final String HEADER_OCS_API = "OCS-APIREQUEST";
 	private static final String HEADER_OCS_API_VALUE = "true";
+	
+	private static final String HEADER_CONTENT_TYPE = "Content-Type";
+	private static final String HEADER_CONTENT_TYPE_VALUE = "application/xml";
 
 	// OCS Route
 	private static final String OCS_ROUTE ="/index.php/ocs/cloud/user?format=json"; 
@@ -86,6 +89,8 @@ public class GetRemoteUserNameOperation extends RemoteOperation {
             //Log.e(TAG, "Getting OC user information from " + client.getWebdavUri() + OCS_ROUTE);
             // Add the Header
             get.addRequestHeader(HEADER_OCS_API, HEADER_OCS_API_VALUE);
+            get.addRequestHeader(HEADER_CONTENT_TYPE, HEADER_CONTENT_TYPE_VALUE);
+            
 			status = client.executeMethod(get);
 			if(isSuccess(status)) {
 				 String response = get.getResponseBodyAsString();
